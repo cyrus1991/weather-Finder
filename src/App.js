@@ -39,14 +39,21 @@ export default class App extends React.Component {
     //Because i havent called the getWeather function,i cann't see anything of consoling.log the data!
     console.log(data);
 
-    this.setState({
-      temperture: data.main.temp,
-      city: data.name,
-      country: data.sys.country,
-      humidity: data.main.humidity,
-      description: data.weather[0].description,
-      error: ""
-    });
+    if (city && country) {
+      this.setState({
+        temperture: data.main.temp,
+        city: data.name,
+        country: data.sys.country,
+        humidity: data.main.humidity,
+        description: data.weather[0].description
+        
+      });
+    } else {
+      this.setState({
+      
+        error: "Please chose the City and the Country!"
+      });
+    }
   };
 
   render() {
