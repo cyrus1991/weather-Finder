@@ -10,12 +10,17 @@ export default class App extends React.Component {
   // async await way to fetch the apicall
 
   getWeather = async e => {
-    /*when you use onsubmit on your form 
+    /* when you use onsubmit on your form 
   you have to use preventDefault method to avoid rerun the whole page 
   whenevre you click on the button */
     e.preventDefault();
+ /* getting access to  the value of the input that we have created on 
+    the Form component thereso we can get access to data of each city of each country the the user put*/
+
+    const city = e.target.elements.city.value;
+    const country = e.target.elements.country.value;
     const api_call = await fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=Manchester,uk&appid=${API_KEY}&units=metric`
+      `http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`
     );
     /* so because I am using "async await " i dont not need to 
   use JSON.parse or JSON.stringfy [thanks async await]*/
